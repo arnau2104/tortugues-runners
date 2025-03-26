@@ -2,13 +2,20 @@
 Colors:
     verd: #8ec099
     verd clar: #c6e2c9
+    gris: #383732
 */
 
 
 @font-face {
-    font-family: Apple;
-    src:url('/tfg/tortugues-runners-web/assets/fonts');;
+    font-family: Druk-Medium;
+    src:url('/tfg/tortugues-runners-web/assets/fonts/DrukTextWide-Medium-Trial.woff2');;
    }
+
+   @font-face {
+    font-family: Apple;
+    src:url('/tfg/tortugues-runners-web/assets/fonts/System San Francisco Display Regular.ttf');;
+   }
+
 
 * {
     margin: 0;
@@ -41,6 +48,9 @@ main {
     align-items: center;
 }
 
+.font-druk-medium {
+    font-family: 'Druk-Medium',Arial, Helvetica, sans-serif;
+}
 
 .logo {
     width: 60px;
@@ -49,17 +59,22 @@ main {
 }
 
 .menu-inicial {
+    position: fixed;
+    top: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 20px;
-    background-color: #333;
+    background-color: #383732;
     color: #ffffff !important;
     padding: 7px 50px;
     width: auto;
     justify-self: center;
     border-radius: 50px;
     margin-top: 10px;
+    z-index: 10;
+    margin-bottom: 900px;
+    
 }
 
 
@@ -67,25 +82,36 @@ main {
 .menu-inicial a, .menu-inicial p {
     text-decoration: none;
     color: #ffffff;
+    font-family: 'Druk-Medium',Arial, Helvetica, sans-serif;
 }
 
 .background-img {
     width: 100%;
-    height: 800px;
+    height: 100vH;
     background-image: url('/tfg/tortugues-runners-web/assets/imgs/quedada-tortugues.jpeg');
     background-size: cover; /*Asegura que l'imatge ocupta tot el contenidor */
     background-repeat: no-repeat; /*Evita la repetició de l'imatge*/
+    position: relative;
    
+}
 
+.background-img::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Capa negra con 50% de opacidad */
 }
 
 #qui-som {
-    border-radius:20px;
-    background-color: #f7f7f7;
-    width: 90%;
+    background-color: #cfe4ca;
+    
     /* align-self: center; */
-    padding: 20px 50px;
+    padding: 120px 50px;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2); /* Sombra para efecto 3D */
+    margin-top: 50px;
 
 }
 
@@ -110,6 +136,34 @@ main {
     display: none; /* Ocultar en Chrome, Safari y Edge */
 }
 
+#volta-menorca {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 150px;
+    gap: 30px;
+}
+
+.contenedor-text-volta-menorca {
+    width: 90vW;
+    background-color: #383732;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.contenedor-text-volta-menorca h2 {
+    font-size: 45px;
+    color: #ffffff;
+}
+
+.contenedor-text-volta-menorca h3 {
+    font-size: 30px;
+    font-style:italic ;
+    color: #ffffff;
+
+}
 
 #volta-menorca .etapa {
     flex: 0 0 90%;
@@ -121,11 +175,12 @@ main {
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2); /* Sombra para efecto 3D */
     border-radius:20px;
     width: 100%;
-    height: 200px;
-    background-color: #8ec099;
+    height: 300px;
+    /* background-color: #8ec099; */
     padding: 15px;
     align-items: center;
-    color: #fffcfa;
+    /* color: #fffcfa; */
+    color: #8ec099;
     gap: 25px;
 
 }
@@ -133,7 +188,7 @@ main {
 #volta-menorca .info-etapa {
    text-align: center;
     width: 100%;
-    color: #fffcfa;
+    color: #8ec099;
 }
 
 
@@ -141,7 +196,7 @@ main {
 #volta-menorca .detalls-etapa {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     gap: 25px;
 }
 
@@ -149,22 +204,44 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: stretch;
     gap: 15px;
 }
 
-#volta-menorca .detall-etapa p {
+#volta-menorca P  {
     color: #383732;
     font-weight: bold;
 }
 
-.font-awesome-icon {
+.ubicacio-etapa {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+}
+
+.ubicacio-etapa i {
+    color: #8ec099;
+}
+
+.foots-icons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.detall-etapa .font-awesome-icon {
     font-size: 55px;
-    color: #fffcfa;
+    color: #8ec099;
 }
 
 .etapa .mes-info {
-    background-color: #f1bf6a;
-    color: #333;
+    background-color: #8ec099;
+    ;
+    color: #383732;
     padding: 10px;
     border-radius: 6px;
     width: 125px;
@@ -172,7 +249,26 @@ main {
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2); /* Sombra para efecto 3D */
 }
 
+.etapa .mes-info:hover {
+    cursor: pointer;
+}
 
+
+
+.nav-btn {
+    background-color: #ddd;
+    border: none;
+    padding: 7px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-btn.active {
+    background-color: #383732;
+    color: white;
+}
 
 
 

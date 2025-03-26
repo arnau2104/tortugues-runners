@@ -1,33 +1,38 @@
 document.addEventListener("DOMContentLoaded", function () {
     const slider = document.querySelector(".slider");
+    const slides = document.querySelectorAll(".etapa");
+    const buttons = document.querySelectorAll(".nav-btn");
+    const prevBtn = document.getElementById("prev-btn");
+    const nextBtn = document.getElementById("next-btn");
+    const currentBtn = document.getElementById("current-btn");
+    
     let isDown = false;
     let startX;
     let scrollLeft;
     let velocity = 0;
     let raf;
 
+    // 🎯 FUNCIONALIDAD: Arrastrar con el ratón (drag)
     slider.addEventListener("mousedown", (e) => {
         isDown = true;
         slider.classList.add("active");
         startX = e.pageX - slider.offsetLeft;
         scrollLeft = slider.scrollLeft;
         document.body.style.userSelect = "none"; // Evita selección de texto
-
-        // Cancela cualquier animación previa
-        cancelAnimationFrame(raf);
+        cancelAnimationFrame(raf); // Cancela animación previa
     });
 
     slider.addEventListener("mouseleave", () => {
         isDown = false;
         slider.classList.remove("active");
-        document.body.style.userSelect = ""; // Restaura selección de texto
+        document.body.style.userSelect = "";
     });
 
     slider.addEventListener("mouseup", () => {
         isDown = false;
         slider.classList.remove("active");
-        document.body.style.userSelect = ""; // Restaura selección de texto
-        inertiaScroll(); // Activa el efecto de inercia
+        document.body.style.userSelect = "";
+        inertiaScroll(); // Activa inercia
     });
 
     slider.addEventListener("mousemove", (e) => {
@@ -39,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
         velocity = walk; // Guarda la velocidad para la inercia
     });
 
-    // Efecto de inercia cuando sueltas el arrastre
+    // 🌊 EFECTO DE INERCIA
     function inertiaScroll() {
         if (Math.abs(velocity) > 0.1) {
             slider.scrollLeft -= velocity;
@@ -48,20 +53,46 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Ajustar la escala del div activo
+   
+    
+    let currentIndex = 0;
+
+    function updateSlider() {
+        slider.scrollTo({
+            left: slides[currentIndex].offsetLeft,
+            behavior: "smooth",
+        });
+        currentBtn.textContent = currentIndex + 1;
+    }
+
+    prevBtn.addEventListener("click", () => {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateSlider();
+        }
+    });
+
+    nextBtn.addEventListener("click", () => {
+        if (currentIndex < slides.length - 1) {
+            currentIndex++;
+            updateSlider();
+        }
+    });
+
+    // Detecta el scroll manual y actualiza los botones
     slider.addEventListener("scroll", () => {
-        clearTimeout(slider.snapTimeout);
-        slider.snapTimeout = setTimeout(() => {
-            let scrollPosition = slider.scrollLeft;
-            let closest = Array.from(slider.children).reduce((prev, curr) => {
-                return Math.abs(curr.offsetLeft - scrollPosition) < Math.abs(prev.offsetLeft - scrollPosition) ? curr : prev;
-            });
+        let closestIndex = 0;
+        let minDiff = Math.abs(slider.scrollLeft - slides[0].offsetLeft);
 
-            // Remueve la clase "active" de todas las etapas
-            document.querySelectorAll(".etapa").forEach(el => el.classList.remove("active"));
-            closest.classList.add("active"); // Aplica la clase "active" a la más cercana
+        slides.forEach((slide, i) => {
+            let diff = Math.abs(slider.scrollLeft - slide.offsetLeft);
+            if (diff < minDiff) {
+                closestIndex = i;
+                minDiff = diff;
+            }
+        });
 
-            slider.scrollTo({ left: closest.offsetLeft, behavior: "smooth" });
-        }, 200);
+        currentIndex = closestIndex;
+        currentBtn.textContent = currentIndex + 1;
     });
 });
