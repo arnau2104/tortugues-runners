@@ -1,24 +1,32 @@
-$(document).ready(function(){
-    // Add smooth scrolling to all links
-    $(".smooth-scroll").on('click', function(event) {
-  
-      // Make sure this.hash has a value before overriding default behavior
+$(document).ready(function () {
+  $(".smooth-scroll").on("click", function (event) {
       if (this.hash !== "") {
-        // Prevent default anchor click behavior
-        event.preventDefault();
-  
-        // Store hash
-        var hash = this.hash;
-  
-        // Using jQuery's animate() method to add smooth page scroll
-        // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
-        $('html, body').animate({
-          scrollTop: $(hash).offset().top
-        }, 1200, function(){
-  
-          // Add hash (#) to URL when done scrolling (default click behavior)
-          window.location.hash = hash;
-        });
-      } // End if
-    });
+          event.preventDefault();
+          var hash = this.hash;
+
+          $("html, body").animate(
+              {
+                  scrollTop: $(hash).offset().top - 100, // Ajusta la distancia
+              },
+              1200,
+              function () {
+                  window.location.hash = hash;
+                  $(".menu-inicial").addClass("scrolled");
+              }
+          );
+      }
   });
+
+
+});
+
+// Event per cambiar el background del header si el scroll supera un nombre d epixels
+window.addEventListener('scroll', function() {
+    let menu = document.querySelector('.menu-inicial');
+    
+    if (window.scrollY >= 850) {
+        menu.classList.add('scrolled');  // Añadir la clase cuando se llegue a 250px
+    } else {
+        menu.classList.remove('scrolled');  // Eliminarla cuando estemos por encima de 250px
+    }
+});

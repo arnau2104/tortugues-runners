@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tortugues Runners</title>
-    <link rel="stylesheet" href="/tfg/tortugues-runners-web/css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 

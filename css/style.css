@@ -60,22 +60,40 @@ main {
 
 .menu-inicial {
     position: fixed;
-    top: 0;
+    top: 0px;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 20px;
-    background-color: #383732;
+    background-color: rgba(56, 55, 50, 0);
     color: #ffffff !important;
     padding: 7px 50px;
     width: auto;
     justify-self: center;
     border-radius: 50px;
-    margin-top: 10px;
+    /* margin-top: 10px; */
     z-index: 10;
-    margin-bottom: 900px;
+    width: 100%;
+    transition: background-color 0.3s ease; 
     
 }
+
+
+@keyframes transparent-to-black {
+    0% {
+        background-color: rgba(56, 55, 50, 0);
+    }
+
+    100% {
+        background-color: #383732; 
+
+    }
+}
+
+.menu-inicial.scrolled {
+    background-color: #383732;  /* Color del header quan es fa  scroll */
+}
+
 
 
 
@@ -88,7 +106,7 @@ main {
 .background-img {
     width: 100%;
     height: 100vH;
-    background-image: url('/tfg/tortugues-runners-web/assets/imgs/quedada-tortugues.jpeg');
+    background-image: url('../assets/imgs/quedada-tortugues.jpeg');
     background-size: cover; /*Asegura que l'imatge ocupta tot el contenidor */
     background-repeat: no-repeat; /*Evita la repetició de l'imatge*/
     position: relative;
@@ -106,13 +124,61 @@ main {
 }
 
 #qui-som {
-    background-color: #cfe4ca;
-    
+    background-color: rgba(207, 228, 202, 0.4);
     /* align-self: center; */
-    padding: 120px 50px;
+    padding: 20px 50px  120px 50px;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2); /* Sombra para efecto 3D */
     margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
 
+#qui-som h2 {
+    text-align: center;
+    font-size: 45px;
+}
+
+#qui-som hr {
+    width: 60%;
+    align-self: center;
+    height: 3px;
+    background-color: #383732;
+    margin-bottom: 55px;
+}
+
+.contenedor-qui-som {
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.div-imatge-qui-som {
+    height: 700px;
+    width: 1000px;
+}
+
+.div-imatge-qui-som img {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+}
+
+
+.qui-som-text  {
+     width: 100%; 
+    padding: 0px 25px;
+   font-size: 18px;
+   display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+
+.qui-som-text  span {
+    font-weight: bold;
 }
 
 .slider {
@@ -270,8 +336,62 @@ main {
     color: white;
 }
 
+.div-podcast {
+    background-image: url('../assets/imgs/logo.png'); 
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Alinear els controles baix */
+    align-items: center;
+    width: 1200px;
+    height: 400px; 
+    position: relative;
+    margin-right: 35px;
+}
+
+.audio-wrapper {
+    background: rgba(0, 0, 0, 0.7); /* Fondo semitransparente */
+    padding: 10px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    display: flex;
+    justify-content: center;
+} 
+
+.contenedor-podcast {
+    margin-top: 100px;
+    flex-direction: row-reverse;
+    padding: 0px 30px;
+}
 
 
+.podcast-text {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    
+}
+
+.podcast-text div {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    font-size: 18px;
+
+}
+
+.podcast-text h3 {
+    font-size: 30px;
+}
+
+
+/* CSS de la tenda*/
 .tenda {
     display: flex;
     flex-direction: column;

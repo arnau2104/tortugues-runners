@@ -5,7 +5,7 @@
                 <a href="#inici" class="smooth-scroll"><img src="/tfg/tortugues-runners-web/assets/imgs/logo.png" class="logo"></a>
                 <a href="#inici" class="smooth-scroll"><p>Inici</p></a>
                 <a href="#volta-menorca" class="smooth-scroll"><p>Volta a Menorca</p></a>
-                <a href="#qui-som" class="smooth-scroll"><p>Qui som?</p></a>
+                <a href="#qui-som" class="smooth-scroll"><p>Sobre Nosaltres</p></a>
                 <p>Contacte</p>
                 <a href="/tfg/tortugues-runners-web/tenda.php"><p>Tenda</p></a>
         </nav>
@@ -288,11 +288,52 @@
     </div>
 
     <div id="qui-som">
-        <h2>Qui som? 🐢🏃‍♂️🏃‍♀️</h2>
-        <p>Benvinguts al Club Esportiu Trail Tortugues Runners Menorca, una gran família de corredors apassionats per la natura, el trail running i el companyerisme. Som un grup de persones amb un mateix objectiu: gaudir de l’esport, superar nous reptes i compartir moments inoblidables tant en entrenaments com en competicions.</p>
-        <h3>El nostre objectiu</h3>
-        <p>Fa mesos que treballem amb molta il·lusió per consolidar aquest club i oferir als socis un espai on puguin créixer com a corredors i, sobretot, com a persones. Organitzem entrenaments, sortides i esdeveniments per fomentar la cohesió i l’esperit d’equip.
-            Ja siguis un corredor experimentat o estiguis començant en el món del trail, aquí trobaràs suport, motivació i una gran família que t’acompanyarà en cada passa.</p>
+        <h2 class="font-druk-medium">Sobre Nosaltres </h2>
+        <hr>
+
+        <div class="contenedor-qui-som">
+            <div class="div-imatge-qui-som">
+                <img src="assets/imgs/quedada-tortugues2.jpeg" alt="imatge sobre qui som">
+            </div>
+
+            <div class="qui-som-text">
+            
+                    <p>Les Tortugues Runners Menorca vam començar la nostra aventura a mitjans del 2018, a raó d'un encontre casual al Camí de Cavalls, on la coincidència va fer que un parell de corredors es creuessin i decidissin córrer junts uns quants quilòmetres. </p>
+
+                    <p>A l'arribada van comentar la idea de formar un grup de corredors, per poder sortir els dissabtes i entrenar junts». D'aquesta manera va ser com va sorgir el somni d'aquest grup d'apassionats pel trail running i que ara, uns set anys després, han decidit constituir-se com a club federat, com a Club Esportiu Trail Tortugues Runners Menorca.</p>
+
+                    <p>Amb el pas del temps, aquell grup de pocs corredors trobats de manera fortuïta mentre corrien va passar a ser de alguns més i poc a poc va anar creixent, «fins a arribar ara a un nombre que supera el mig centenar.</p>
+
+                    <p>Actualment, el club compta amb 70 socis inscrits, dels quals uns 50 estan degudament federats a la Federació d’Atletisme de les Illes Balears», ens detalla el nou col·lectiu, que des d'aquesta nit estarà encapçalat per una junta directiva amb el president, Òscar Abelló, de vicepresident, Raül Rey, els tresorers, Biel Gelabert i Maite Rotger, com a secretaris, Xim Llorens i Damià Díaz, i ja de vocals, Joan Melis, Rubén Alonso, Ester Servera, Dani Salord i Ana Bagur.</p>
+
+</div>
+        </div>
+
+        <div class="contenedor-qui-som contenedor-podcast">
+     
+            <div class="div-podcast">
+                <div class="audio-wrapper">
+                    <audio controls>
+                        <source src="assets/podcast-tortugues.mp3" type="audio/mpeg">
+                        El teu navegador no suporta el reproductor d'àudio.
+                    </audio>
+                </div>
+            </div>
+
+            <div class="podcast-text">
+                <h3>Les Tortugues a la Premsa</h3>
+                <div>
+                    <p>L'altre dia les Tortugues Runners hem tingut l'oportunitat d'anar a la ràdio per participar en un podcast/entrevista. </p>
+
+                    <p>Ha estat una experiència genial, on hem pogut explicar el nostre viatge com a grup, compartir les nostres vivències i els reptes que hem superat. Ha estat molt divertit poder parlar amb els oients i deixar-los conèixer una mica més sobre nosaltres, les nostres motivacions i les nostres passió per córrer. </p>
+                    
+                    <p> Agraïm molt a l'equip de la ràdio per convidar-nos i fer-nos sentir com a casa. Estem emocionas de poder seguir creixent i compartint la nostra història amb tots vosaltres!</p>
+                </div>
+                    
+            </div>
+        </div>
+        </div>
+
     </div>
 </main>
 
