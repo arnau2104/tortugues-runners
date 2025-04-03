@@ -1,292 +1,89 @@
-<?php include($_SERVER['DOCUMENT_ROOT']. '/tfg/tortugues-runners-web/header.php') ?>
+<?php include($_SERVER['DOCUMENT_ROOT'].'/tortugues-runners-web/header.php') ?>
 
 <main>
-<nav class="menu-inicial ">
-                <a href="#inici" class="smooth-scroll"><img src="/tfg/tortugues-runners-web/assets/imgs/logo.png" class="logo"></a>
-                <a href="#inici" class="smooth-scroll"><p>Inici</p></a>
-                <a href="#volta-menorca" class="smooth-scroll"><p>Volta a Menorca</p></a>
-                <a href="#qui-som" class="smooth-scroll"><p>Sobre Nosaltres</p></a>
-                <p>Contacte</p>
-                <a href="/tfg/tortugues-runners-web/tenda.php"><p>Tenda</p></a>
-        </nav>
+   
+       <!-- contenedor ont hi ha la image principal  -->
     <div id="inici" class="background-img">
         
     </div>
 
     <div id="volta-menorca">
-        <div class="contenedor-text-volta-menorca">
-            <h2 class="font-druk-medium">Volta a Menorca</h2>
-            <h3>5a Edició</h3>
-        </div>
-        <div class="slider">
-            <div class="etapa">
-                <div class="info-etapa">
-                    <h3>PRIMERA ETAPA</h3>    
-                </div>
-                <div class="detalls-etapa">
-                    <div class="detall-etapa">
-                        <i class="fa-solid fa-calendar-days font-awesome-icon"></i>
-                        <p>16 DE NOVEMBRE</p>
+    <?php include('querys/query_etapa_select.php'); //incluim el fitxer amb la consulta a la base de dades 
+           if($etapes){  ?>
+                 <div class="contenedor-text-volta-menorca">
+                        <h2 class="font-druk-medium">Volta a Menorca</h2>
+                        <h3>5a Edició</h3>
+                  </div>
+                  
+                  <div class="slider">
+                  
+                <!-- recorrem totes les etapes -->
+               <?php 
+               $num_etapa = 0;
+               foreach($etapes as $etapa) {
+                    $num_etapa++;
+
+                    //formatejam la data al sistema habitual utilizat a espanya
+                    $data_inici_formatejada = (new DateTime($etapa['data_inici']))->format('d-m-Y');
+
+                ?>  
+                   
+                            
+                        <div class="etapa">
+                            <div class="info-etapa">
+                                <h3><?php echo $num_etapa . 'a'; ?> ETAPA</h3>    
+                            </div>
+                            <div class="detalls-etapa">
+                                <div class="detall-etapa">
+                                    <i class="fa-solid fa-calendar-days font-awesome-icon"></i>
+                                    <p><?php echo $data_inici_formatejada; ?></p>
+                                </div>
+                                <div class="detall-etapa">
+                                    <i class="fa-solid fa-map-location-dot font-awesome-icon"></i>                    
+                                    <div class="ubicacio-etapa">
+                                            <p><?php echo strtoupper($etapa['lloc_sortida']); ?> </p>
+                                            <div class="foots-icons">
+                                                <i class="fa-solid fa-shoe-prints fa-rotate-90"></i>
+                                                <i class="fa-solid fa-shoe-prints fa-rotate-90"></i>
+                                                <i class="fa-solid fa-shoe-prints fa-rotate-90"></i>
+                                            </div>
+                                            <p><?php echo strtoupper($etapa['lloc_arribada']); ?></p>
+                                    </div> 
+                                </div>
+
+                                <div class="detall-etapa">
+                                    <i class="fa-solid fa-person-hiking font-awesome-icon"></i>
+                                    <p><?php echo $etapa['kilometres']; ?></p>
+                                </div>
+                        </div>
+                        
+                        <!-- formulari que envia l'id de la etapa a la pagina etapa-->
+                        <form action="pages/etapa.php" method="post">
+                            <input type="number" name="etapa_id" value="<?php echo $etapa['etapa_id'];?>" hidden>
+                            <button name="submit" class="mes-info"> Apuntet! </button>
+                        </form>
+
+                        </div>
+                    
+
+                   
+                    <!-- End foreach de les etapes -->
+                    <?php }?> 
+                    
+                 </div>
+
+                    <!-- Botons del slider -->
+                    <div class="slider-nav">
+                    <button class="nav-btn" id="prev-btn">◀</button>
+                    <button class="nav-btn active" id="current-btn">1</button>
+                    <button class="nav-btn" id="next-btn">▶</button>
                     </div>
-                    <div class="detall-etapa">
-                        <i class="fa-solid fa-map-location-dot font-awesome-icon"></i>                    
-                        <div class="ubicacio-etapa">
-                                <p>CIUTADELLA </p>
-                                <div class="foots-icons">
-                                    <i class="fa-solid fa-shoe-prints fa-rotate-90"></i>
-                                    <i class="fa-solid fa-shoe-prints fa-rotate-90"></i>
-                                    <i class="fa-solid fa-shoe-prints fa-rotate-90"></i>
-                                </div>
-                                <p>LA VALL</p>
-                            </div> 
-                    </div>
-
-                    <div class="detall-etapa">
-                        <i class="fa-solid fa-person-hiking font-awesome-icon"></i>
-                        <p>24 KM</p>
-                    </div>
-            </div>
-
-            <button class="mes-info"> + INFO </button>
-
-            </div>
-
-            <div class="etapa">
-                <div class="info-etapa">
-                    <h3>SEGONA ETAPA</h3>    
-            </div>
-            <div class="detalls-etapa">
-                    <div class="detall-etapa">
-                        <i class="fa-solid fa-calendar-days font-awesome-icon"></i>
-                        <p>30 DE NOVEMBRE</p>
-                    </div>
-                    <div class="detall-etapa">
-                        <i class="fa-solid fa-map-location-dot font-awesome-icon"></i>                    
-                        <div class="ubicacio-etapa">
-                                <p>LA VALL </p>
-                                <div class="foots-icons">
-                                    <i class="fa-solid fa-shoe-prints fa-rotate-90"></i>
-                                    <i class="fa-solid fa-shoe-prints fa-rotate-90"></i>
-                                    <i class="fa-solid fa-shoe-prints fa-rotate-90"></i>
-                                </div>
-                                <p>BINIMETL·LA</p>
-                            </div> 
-                    </div>
-
-                    <div class="detall-etapa">
-                        <i class="fa-solid fa-person-hiking font-awesome-icon"></i>
-                        <p>19 KM</p>
-                    </div>
-            </div>
-
-            <button class="mes-info"> + INFO </button>
-
-            </div>
-
-            <div class="etapa">
-                <div class="info-etapa">
-                    <h3>TERCERA ETAPA</h3>    
-                </div>
-                <div class="detalls-etapa">
-                        <div class="detall-etapa">
-                            <i class="fa-solid fa-calendar-days font-awesome-icon"></i>
-                            <p>14/12/2024</p>
-                        </div>
-                        <div class="detall-etapa">
-                            <i class="fa-solid fa-map-location-dot font-awesome-icon"></i>
-                            <div class="ubicacio-etapa">
-                                <p>BINIMETL·LA </p>
-                                <div class="foots-icons">
-                                    <i class="fa-solid fa-shoe-prints fa-rotate-90"></i>
-                                    <i class="fa-solid fa-shoe-prints fa-rotate-90"></i>
-                                    <i class="fa-solid fa-shoe-prints fa-rotate-90"></i>
-                                </div>
-                                <p>ARENAL D'ES CASTELL</p>
-                            </div>                    
-                             
-                        </div>
-
-                        <div class="detall-etapa">
-                            <i class="fa-solid fa-person-hiking font-awesome-icon"></i>
-                            <p>23 KM</p>
-                        </div>
-                </div>
-
-            <button class="mes-info"> + INFO </button>
-
-            </div>
-
-            <div class="etapa">
-                <div class="info-etapa">
-                    <h3>QUARTA ETAPA</h3>    
-                </div>
-                <div class="detalls-etapa">
-                        <div class="detall-etapa">
-                            <i class="fa-solid fa-calendar-days font-awesome-icon"></i>
-                            <p>18 DE GENER</p>
-                        </div>
-                        <div class="detall-etapa">
-                            <i class="fa-solid fa-map-location-dot font-awesome-icon"></i>                    
-                            <div class="ubicacio-etapa">
-                                <p>ARENAL D'ES CASTELL </p>
-                                <div class="foots-icons">
-                                    <i class="fa-solid fa-shoe-prints fa-rotate-90"></i>
-                                    <i class="fa-solid fa-shoe-prints fa-rotate-90"></i>
-                                    <i class="fa-solid fa-shoe-prints fa-rotate-90"></i>
-                                </div>
-                                <p>ES GRAU</p>
-                            </div> 
-                        </div>
-
-                        <div class="detall-etapa">
-                            <i class="fa-solid fa-person-hiking font-awesome-icon"></i>
-                            <p>22 KM</p>
-                        </div>
-                </div>
-
-            <button class="mes-info"> + INFO </button>
-
-            </div>
-
-            <div class="etapa">
-                <div class="info-etapa">
-                    <h3>CINQUENA ETAPA</h3>    
-                </div>
-                <div class="detalls-etapa">
-                        <div class="detall-etapa">
-                            <i class="fa-solid fa-calendar-days font-awesome-icon"></i>
-                            <p>15 DE FEBRER</p>
-                        </div>
-                        <div class="detall-etapa">
-                            <i class="fa-solid fa-map-location-dot font-awesome-icon"></i>                    
-                            <div class="ubicacio-etapa">
-                                <p>ES GRAU </p>
-                                <div class="foots-icons">
-                                    <i class="fa-solid fa-shoe-prints fa-rotate-90"></i>
-                                    <i class="fa-solid fa-shoe-prints fa-rotate-90"></i>
-                                    <i class="fa-solid fa-shoe-prints fa-rotate-90"></i>
-                                </div>
-                                <p>PUNTA PRIMA</p>
-                            </div> 
-                        </div>
-
-                        <div class="detall-etapa">
-                            <i class="fa-solid fa-person-hiking font-awesome-icon"></i>
-                            <p>24 KM</p>
-                        </div>
-                </div>
-
-            <button class="mes-info"> + INFO </button>
-
-            </div>
-
-            <div class="etapa">
-                <div class="info-etapa">
-                    <h3>SISENA ETAPA</h3>    
-                </div>
-                <div class="detalls-etapa">
-                        <div class="detall-etapa">
-                            <i class="fa-solid fa-calendar-days font-awesome-icon"></i>
-                            <p>15 DE MARÇ</p>
-                        </div>
-                        <div class="detall-etapa">
-                            <i class="fa-solid fa-map-location-dot font-awesome-icon"></i>                    
-                            <div class="ubicacio-etapa">
-                                <p>PUNTA PRIMA</p>
-                                <div class="foots-icons">
-                                    <i class="fa-solid fa-shoe-prints fa-rotate-90"></i>
-                                    <i class="fa-solid fa-shoe-prints fa-rotate-90"></i>
-                                    <i class="fa-solid fa-shoe-prints fa-rotate-90"></i>
-                                </div>
-                                <p>CALAN PORTER</p>
-                            </div> 
-                        </div>
-
-                        <div class="detall-etapa">
-                            <i class="fa-solid fa-person-hiking font-awesome-icon"></i>
-                            <p>23 KM</p>
-                        </div>
-                </div>
-
-            <button class="mes-info"> + INFO </button>
-
-            </div>
-
-            <div class="etapa">
-                <div class="info-etapa">
-                    <h3>SÈPTIMA ETAPA</h3>    
-                </div>
-                <div class="detalls-etapa">
-                        <div class="detall-etapa">
-                            <i class="fa-solid fa-calendar-days font-awesome-icon"></i>
-                            <p>22 DE MARÇ</p>
-                        </div>
-                        <div class="detall-etapa">
-                            <i class="fa-solid fa-map-location-dot font-awesome-icon"></i>                    
-                            <div class="ubicacio-etapa">
-                                <p>CALAN PORTER </p>
-                                <div class="foots-icons">
-                                    <i class="fa-solid fa-shoe-prints fa-rotate-90"></i>
-                                    <i class="fa-solid fa-shoe-prints fa-rotate-90"></i>
-                                    <i class="fa-solid fa-shoe-prints fa-rotate-90"></i>
-                                </div>
-                                <p>CALA GALDANA</p>
-                            </div> 
-                        </div>
-
-                        <div class="detall-etapa">
-                            <i class="fa-solid fa-person-hiking font-awesome-icon"></i>
-                            <p>24 KM</p>
-                        </div>
-                </div>
-
-            <button class="mes-info"> + INFO </button>
-
-            </div>
-
-            <div class="etapa">
-                <div class="info-etapa">
-                    <h3>OCATAVA ETAPA</h3>    
-                </div>
-                <div class="detalls-etapa">
-                        <div class="detall-etapa">
-                            <i class="fa-solid fa-calendar-days font-awesome-icon"></i>
-                            <p>12 D'ABRIL</p>
-                        </div>
-                        <div class="detall-etapa">
-                            <i class="fa-solid fa-map-location-dot font-awesome-icon"></i>                    
-                            <div class="ubicacio-etapa">
-                                <p>CALA GALDANA </p>
-                                <div class="foots-icons">
-                                    <i class="fa-solid fa-shoe-prints fa-rotate-90"></i>
-                                    <i class="fa-solid fa-shoe-prints fa-rotate-90"></i>
-                                    <i class="fa-solid fa-shoe-prints fa-rotate-90"></i>
-                                </div>
-                                <p>CIUTADELLA</p>
-                            </div> 
-                        </div>
-
-                        <div class="detall-etapa">
-                            <i class="fa-solid fa-person-hiking font-awesome-icon"></i>
-                            <p>32 KM</p>
-                        </div>
-                </div>
-
-            <button class="mes-info"> + INFO </button>
-
-            </div>
-
-        </div>
-
-            <!-- Botons del slider -->
-            <div class="slider-nav">
-            <button class="nav-btn" id="prev-btn">◀</button>
-            <button class="nav-btn active" id="current-btn">1</button>
-            <button class="nav-btn" id="next-btn">▶</button>
-            </div>
-
+            <?php } else {
+                echo "No hi ha etapes";
+                }?>
     </div>
 
+    <!-- comensament qui som -->
     <div id="qui-som">
         <h2 class="font-druk-medium">Sobre Nosaltres </h2>
         <hr>
@@ -306,7 +103,7 @@
 
                     <p>Actualment, el club compta amb 70 socis inscrits, dels quals uns 50 estan degudament federats a la Federació d’Atletisme de les Illes Balears», ens detalla el nou col·lectiu, que des d'aquesta nit estarà encapçalat per una junta directiva amb el president, Òscar Abelló, de vicepresident, Raül Rey, els tresorers, Biel Gelabert i Maite Rotger, com a secretaris, Xim Llorens i Damià Díaz, i ja de vocals, Joan Melis, Rubén Alonso, Ester Servera, Dani Salord i Ana Bagur.</p>
 
-</div>
+            </div>
         </div>
 
         <div class="contenedor-qui-som contenedor-podcast">
@@ -328,13 +125,19 @@
                     <p>Ha estat una experiència genial, on hem pogut explicar el nostre viatge com a grup, compartir les nostres vivències i els reptes que hem superat. Ha estat molt divertit poder parlar amb els oients i deixar-los conèixer una mica més sobre nosaltres, les nostres motivacions i les nostres passió per córrer. </p>
                     
                     <p> Agraïm molt a l'equip de la ràdio per convidar-nos i fer-nos sentir com a casa. Estem emocionas de poder seguir creixent i compartint la nostra història amb tots vosaltres!</p>
-                </div>
-                    
+                </div>         
             </div>
         </div>
-        </div>
-
+    
+    <!-- end qui som -->
     </div>
+
+    <!-- start contenedor colaboradors -->
+     <div id="colaboradors">
+
+     </div>
+
+    
 </main>
 
-<?php include($_SERVER['DOCUMENT_ROOT']. '/tfg/tortugues-runners-web/footer.php') ?>
+<?php include('footer.php') ?>
