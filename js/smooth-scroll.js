@@ -1,4 +1,4 @@
-if(window.location.pathname.split("/").pop() == 'index.php') {
+if(window.location.pathname.split("/").pop() == 'index.php' || window.location.pathname.split("/").pop() == '') {
 
 $(document).ready(function () {
   $(".smooth-scroll").on("click", function (event) {

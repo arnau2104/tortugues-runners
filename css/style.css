@@ -3,6 +3,7 @@ Colors:
     verd: #8ec099
     verd clar: #c6e2c9
     gris: #383732
+    #95b291
 */
 
 
@@ -34,11 +35,16 @@ height: 100%;
 }
 
 footer {
-    background-color: #f1bf6a;
+    background-color: #383732;
     width: 100%;
     text-align: center;
     height: 100px;
     margin-top: 101px;
+    color: white;
+}
+
+footer >  a, footer > p {
+  color: white;
 }
 
 main { 
@@ -425,7 +431,8 @@ gap: 50px;
 
 .icones-informacio-etapa-individual >  div > i {
   font-size: 50px;
-color: #10b981;
+ /* color: #95b291; */
+ color: #8ec099;
 }  
 
 
@@ -656,6 +663,14 @@ color: #10b981;
 
 /*final css formulari inscripcio*/
 
+#map {
+  position: relative;
+  z-index: 0; /* Asegura que esté en la capa correcta */
+}
+
+.leaflet-container {
+  z-index: 1 !important; /* Evita que esté por encima de otros objetos */
+}
 
 
 /* CSS de la tenda*/
