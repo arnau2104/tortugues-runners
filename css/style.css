@@ -122,7 +122,8 @@ main {
 }
 
 #qui-som {
-    background-color: rgba(207, 228, 202, 0.4);
+    /* background-color: rgba(207, 228, 202, 0.4); */
+    background-color:rgba(149, 178, 145, 0.4);
     /* align-self: center; */
     padding: 20px 50px  120px 50px;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2); /* Sombra para efecto 3D */
@@ -395,12 +396,15 @@ main {
     flex-direction: column;
     gap: 100px;
     align-items: center;
+    width: 100%;
 }
 
 .contenedor-etapa {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     gap: 45px;
+    width: 100%;
+    position: relative;
 }
 
 .contenedor-etapa > div:first-child {
@@ -448,6 +452,11 @@ gap: 50px;
 
 /* inici CSS formulari inscripcio*/
 
+.inscripcio-etapa {
+  position: absolute;
+  right: 100px;
+}
+
 /* From Uiverse.io by kyle1dev */ 
 .modern-form {
     --primary:  #8ec099;
@@ -459,7 +468,7 @@ gap: 50px;
     --bg-input: #f8fafc;
   
     position: relative;
-    width: 300px;
+    width: 400px;
     padding: 24px;
     background: #ffffff;
     border-radius: 16px;
@@ -662,6 +671,11 @@ gap: 50px;
   
 
 /*final css formulari inscripcio*/
+
+#etapa-individual .titol-etapa {
+  margin-top: 50px;
+  font-size: 30px;
+}
 
 #map {
   position: relative;

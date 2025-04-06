@@ -10,7 +10,7 @@
 
            <section id="etapa-individual">
             <?php
-           $activitat = agafarActivitatPerId('14079418483');
+           $activitat = agafarActivitatPerId($etapa['strava_etapa_id']);
            $polyline = $activitat['map']['polyline'];
            $coordInici = $activitat['start_latlng'];
            $coordFinal = $activitat['end_latlng'];
@@ -20,7 +20,7 @@
     ?>
     
             
-               <h1>ETAPA <?php echo strtoupper($etapa['lloc_sortida']. ' - ' . $etapa['lloc_arribada']) ?></h1>
+               <h1 class="titol-etapa font-druk-medium">ETAPA <?php echo strtoupper($etapa['lloc_sortida']. ' - ' . $etapa['lloc_arribada']) ?></h1>
                
                 <div class="contenedor-etapa">
                     <!-- div que conte tota l'informacio de l'etapa-->
@@ -45,7 +45,7 @@
                              </div>
 
                              <!-- <div class="strava-embed-placeholder" data-embed-type="activity" data-embed-id="12377930041" data-style="standard" data-from-embed="false"></div><script src="https://strava-embeds.com/embed.js"></script> -->
-                             <div id="map" style="height: 500px; "></div>
+                             <div id="map" style="height: 500px;"></div>
 
 
 
