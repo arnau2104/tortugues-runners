@@ -2,7 +2,7 @@
 $server = 'localhost';
 $user = 'root';
 $password = '';
-$db_name = '067_hotel_managment_system';
+$db_name = 'tortugues-runners';
 
 //connect to databas
 $conn = mysqli_connect($server, $user, $password, $db_name );

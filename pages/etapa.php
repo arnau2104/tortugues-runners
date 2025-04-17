@@ -1,26 +1,38 @@
-<?php include($_SERVER['DOCUMENT_ROOT'].'/tortugues-runners-web/header.php') ?>
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+?>
+
+<?php include('../header.php') ?>
 
 <main> 
 
-    <?php include($_SERVER['DOCUMENT_ROOT'] . '/tortugues-runners-web/querys/query_etapa_select_one.php');
-    include($_SERVER['DOCUMENT_ROOT'] . '/tortugues-runners-web/functions/strava-functions.php'); 
-
-  
-        if($etapa) {  ?>
+    <?php 
+        include ('../db_connection/db_connection.php');
+        include('../querys/query_etapa_select_one.php');
+    ?>
 
            <section id="etapa-individual">
+
+           
+
+
+
             <?php
-           $activitat = agafarActivitatPerId($etapa['strava_etapa_id']);
-           $polyline = $activitat['map']['polyline'];
-           $coordInici = $activitat['start_latlng'];
-           $coordFinal = $activitat['end_latlng'];
+
+            if(isset($etapa)) {
+       
+           $polyline = $etapa['polyline'];
+           $coordInici = explode(',', $etapa['latitud_inicial']);
+           $coordFinal = explode(',', $etapa['latitud_final']);
           
 
             
     ?>
     
-            
-               <h1 class="titol-etapa font-druk-medium">ETAPA <?php echo strtoupper($etapa['lloc_sortida']. ' - ' . $etapa['lloc_arribada']) ?></h1>
+                <div class="etapa-banner">
+                    <h1 class="titol-etapa font-druk-medium">ETAPA <?php echo strtoupper($etapa['lloc_sortida']. ' - ' . $etapa['lloc_arribada']) ?></h1>
+                </div>
                
                 <div class="contenedor-etapa">
                     <!-- div que conte tota l'informacio de l'etapa-->
@@ -29,7 +41,7 @@
                             <div class="icones-informacio-etapa-individual">
                                 <div>
                                     <i class="fa-solid fa-map-pin"></i>
-                                    <p>Pàrquinkg La Vall</p>
+                                    <p><?php echo ucwords($etapa['lloc_arribada']) ?></p>
                                 </div>
 
                                 <div>
@@ -44,8 +56,7 @@
 
                              </div>
 
-                             <!-- <div class="strava-embed-placeholder" data-embed-type="activity" data-embed-id="12377930041" data-style="standard" data-from-embed="false"></div><script src="https://strava-embeds.com/embed.js"></script> -->
-                             <div id="map" style="height: 500px;"></div>
+                             <div id="map"></div>
 
 
 
@@ -144,13 +155,14 @@
 
                         </aside>
                 </div>
-           </section> 
-
-
+                
         <?php }else {
             echo "Error al cargar l'etapa";
         }
         ?>
+           </section> 
+
+
     
    
 
@@ -163,7 +175,7 @@
 
 <script>
   // Reemplaza con tu propia summary_polyline
-  const encodedPolyline ="<?php echo addslashes($polyline); ?>"; //afegim addslashes perque no ens llevi els caracters especials que conte el polyline
+  const encodedPolyline ="<?php echo $polyline; ?>"; //afegim addslashes perque no ens llevi els caracters especials que conte el polyline
   // Coordenadas de inicio y fin (reemplaza por las reales)
   const startLatLng = [ <?php echo $coordInici[0];?>, <?php echo $coordInici[1];?>]; // afegim les coordenades de l'inici de la etapa, que estan auna variable php
   const endLatLng = [<?php echo $coordFinal[0];?>, <?php echo $coordFinal[1];?>];  // afegim les coordenades del final de la etapa, que estan auna variable php
@@ -202,7 +214,4 @@ L.marker(endLatLng).addTo(map)
 
 
 
-<?php include($_SERVER['DOCUMENT_ROOT'].'/tortugues-runners-web/footer.php') ?>
-
-
-<!-- token acces strava api 1832ffe41b567722a3b2f0c6d1cd38cf4cd78de9 -->
+<?php include('../footer.php') ?>

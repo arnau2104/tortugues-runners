@@ -9,12 +9,12 @@ Colors:
 
 @font-face {
     font-family: Druk-Medium;
-    src:url('/tortugues-runners-web/assets/fonts/DrukTextWide-Medium-Trial.woff2');;
+    src:url('../assets/fonts/DrukTextWide-Medium-Trial.woff2');;
    }
 
    @font-face {
     font-family: Apple;
-    src:url('/tortugues-runners-web/assets/fonts/System San Francisco Display Regular.ttf');;
+    src:url('../assets/fonts/System San Francisco Display Regular.ttf');;
    }
 
 
@@ -31,7 +31,7 @@ body {
 display: flex;
 flex-direction: column; 
 height: 100%;
-   min-height: 100vh;
+  min-height: 100vh;
 }
 
 footer {
@@ -56,35 +56,58 @@ main {
     align-items: center;
 }
 
+.container {
+  max-width: 1400px;
+}
+
 .font-druk-medium {
     font-family: 'Druk-Medium',Arial, Helvetica, sans-serif;
 }
 
-.logo {
-    width: 60px;
-    height: 60px;
-    border-radius: 100%;
-}
+
 
 
 .menu-inicial {
     position: fixed;
     top: 0px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    gap: 20px;
     background-color: rgba(56, 55, 50, 0);
     color: #ffffff !important;
     padding: 7px 50px;
-    width: auto;
     justify-self: center;
-    /* border-radius: 50px; */
-    /* margin-top: 10px; */
     z-index: 10;
     width: 100%;
     transition: background-color 0.6s ease; 
 
+}
+
+.logo {
+  width: 100px;
+  height: 80px;
+  /* border-radius: 100%; */
+ 
+}
+
+#call-to-action {
+display: flex;
+flex-grow: 1;
+flex-basis: 0;
+justify-content: end;
+}
+
+#call-to-action a {
+  border: 2px solid #fff;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.menu-inicial .links {
+  display: flex;
+  gap: 20px;
+  flex-grow: 1;
+  flex-basis: 0;
 }
 
 .menu-inicial.scrolled {
@@ -102,12 +125,12 @@ main {
 }
 
 .background-img {
+    position: relative;
     width: 100%;
     height: 100vH;
     background-image: url('../assets/imgs/quedada-tortugues.jpeg');
     background-size: cover; /*Asegura que l'imatge ocupta tot el contenidor */
     background-repeat: no-repeat; /*Evita la repetició de l'imatge*/
-    position: relative;
    
 }
 
@@ -118,15 +141,45 @@ main {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Capa negra amb 50% d'opacitat */
+    background-color: rgba(0, 0, 0, 0.3); /* Capa negra amb 50% d'opacitat */
 }
 
+
+
+.scroll-down {
+  position: absolute;
+    bottom: 3vh;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    font-size: 13px;
+    z-index: 8;
+}
+
+ .mouse-down {
+  position: relative;
+  display: flex;
+  -webkit-animation: bounce 2s infinite;
+  animation: bounce 2s infinite;
+  height: 50px;
+  width: 30px;
+  line-height: 60px !important;
+  border-radius: 30px;
+  border: 2px solid #ffffff;
+  display: inline-block;
+  color: #fff;
+  font-size: 12px;
+}
+ 
+
+
+/*Qui som*/
+
 #qui-som {
-    /* background-color: rgba(207, 228, 202, 0.4); */
-    background-color:rgba(149, 178, 145, 0.4);
+    background-color: #edf5ee;
+    /* background-color:rgba(149, 178, 145, 0.4); */
     /* align-self: center; */
     padding: 20px 50px  120px 50px;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2); /* Sombra para efecto 3D */
     margin-top: 50px;
     display: flex;
     flex-direction: column;
@@ -181,9 +234,11 @@ main {
     font-weight: bold;
 }
 
+/*Volta Menorca*/
+
 .slider {
     /* aspect-ratio: 10 / 16; */
-    width: 500px;
+    width: 100%;
     position: relative;
     display: flex;
     overflow-x: auto;
@@ -209,6 +264,7 @@ main {
     align-items: center;
     margin-top: 150px;
     gap: 30px;
+    width: 100%;
 }
 
 .contenedor-text-volta-menorca {
@@ -232,8 +288,7 @@ main {
 }
 
 #volta-menorca .etapa {
-    flex: 0 0 90%;
-
+    flex: 0 0 33%;
     object-fit: cover;
     scroll-snap-align: center;
     display: flex;
@@ -310,6 +365,8 @@ main {
     width: 125px;
     border: none;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2); /* Sombra para efecto 3D */
+    text-align: center;
+    text-decoration: none;
 }
 
 .etapa .mes-info:hover {
@@ -332,6 +389,8 @@ main {
     background-color: #383732;
     color: white;
 }
+
+/*Qui som*/
 
 .div-podcast {
     background-image: url('../assets/imgs/logo.png'); 
@@ -391,7 +450,7 @@ main {
 /* CSS de etapa individual*/
 
 #etapa-individual {
-    margin-top: 100px; /* marge per separar el continfut de la pagina del header*/
+    margin-top: 98px; /* marge per separar el continfut de la pagina del header*/
     display: flex;
     flex-direction: column;
     gap: 100px;
@@ -399,12 +458,34 @@ main {
     width: 100%;
 }
 
+.etapa-banner {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  background-image: url('../assets/imgs/banner.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white; /* para que el texto se vea claro */
+  overflow: hidden;
+}
+
+.etapa-banner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3); /* capa oscura */
+  z-index: 1;
+}
+
 .contenedor-etapa {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 45px;
     width: 100%;
-    position: relative;
 }
 
 .contenedor-etapa > div:first-child {
@@ -435,8 +516,8 @@ gap: 50px;
 
 .icones-informacio-etapa-individual >  div > i {
   font-size: 50px;
- /* color: #95b291; */
- color: #8ec099;
+ color: #383732;
+
 }  
 
 
@@ -452,10 +533,7 @@ gap: 50px;
 
 /* inici CSS formulari inscripcio*/
 
-.inscripcio-etapa {
-  position: absolute;
-  right: 100px;
-}
+
 
 /* From Uiverse.io by kyle1dev */ 
 .modern-form {
@@ -673,13 +751,17 @@ gap: 50px;
 /*final css formulari inscripcio*/
 
 #etapa-individual .titol-etapa {
-  margin-top: 50px;
+   position: relative; /*posam positon realtive perque quedi damunt la capa fosca del banner*/
+  margin-top: 70px;
   font-size: 30px;
+  text-align: center;
+  color: #fff;
+  z-index: 2; /*posam z-index major que la capa fosca del banner */
+  
 }
 
 #map {
-  position: relative;
-  z-index: 0; /* Asegura que esté en la capa correcta */
+ height: 500px !important;
 }
 
 .leaflet-container {
